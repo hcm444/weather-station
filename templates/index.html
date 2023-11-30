@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station - Final Project by Henry Meier</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: Arial, sans-serif; /* Specify your desired font-family */
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Station</h1>
+    <p>This is the final project by Henry Meier for the course "Introduction to IoT and Embedded Systems (175962)" at UC San Diego Extended Studies.</p>
+    <ul>
+        {% for device in iot_devices %}
+            <li>
+                <strong>Sensor ID:</strong> {{ device['sensor_id'] }},
+                <strong>Temperature:</strong> {{ device['temp'] }}°C,
+                <strong>Humidity:</strong> {{ device['humidity'] }}%,
+                <strong>Timestamp:</strong> {{ device['timestamp_utc']}}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
