@@ -8,12 +8,12 @@ import ubinascii
 import os
 from umqtt.simple import MQTTClient
 
-# Function to generate a unique ID
+
 def generate_sensor_id():
     random_id = ubinascii.hexlify(os.urandom(4)).decode()
     return f"{random_id}"
 
-# Function to get the current UTC timestamp
+
 def get_utc_timestamp():
     return utime.time()
 
@@ -46,7 +46,7 @@ while True:
     print("Measuring weather conditions... ", end="")
     sensor.measure()
     
-    # Include UTC timestamp in the message
+
     timestamp_utc = get_utc_timestamp()
     message = ujson.dumps({
         "sensor_id": MQTT_CLIENT_ID,

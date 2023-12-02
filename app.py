@@ -9,9 +9,9 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(mqtt_topic)
 def on_message(client, userdata, msg):
     payload = json.loads(msg.payload.decode("utf-8"))
-    # Extracting the sensor ID from the payload
+
     sensor_id = payload.get("sensor_id", "unknown")
-    # Update or add the data for the specific sensor ID
+
     iot_devices[sensor_id] = payload
     print(f"Received message from {sensor_id}: {payload}")
 mqtt_client = mqtt.Client()
@@ -21,7 +21,7 @@ mqtt_client.connect(mqtt_broker_address, 1883, 60)
 mqtt_client.loop_start()
 @app.route("/")
 def index():
-    # Convert the dictionary values to a list for rendering
+
     devices_list = list(iot_devices.values())
     return render_template("index.html", iot_devices=devices_list)
 if __name__ == "__main__":
